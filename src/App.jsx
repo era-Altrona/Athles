@@ -6,13 +6,13 @@ import Services from "./components/Services/services";
 import Footer from "./components/Footer/footer";
 import Newsletter from "./components/Newletter/Newsletter";
 import Price from "./components/price/Price";
+import Employees from "./components/Employees/Employees";
 import "./css/background.css";
 
 export default function App() {
   return (
     <Router>
       <div className="svgBackground">
-
         <main>
           <Routes>
             <Route path="/" element={
@@ -20,6 +20,7 @@ export default function App() {
                 <Header />
                 <Hero />
                 <AboutUs />
+                <Employees />
                 <Services />
                 <Newsletter />
               </>

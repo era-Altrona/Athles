@@ -1,10 +1,10 @@
-/* Твій початковий код з невеликими правками для адаптивності */
+
 .heroContainer {
   display: flex;
   justify-content: space-between; 
   align-items: center;
   padding: 96px 48px;
-  gap: 40px; /* Додано відступ між текстом і зображенням */
+  gap: 40px; 
 }
 
 .heroContentContainer {
@@ -17,12 +17,12 @@
 
 .heroTitle {
   line-height: 1.2;
-  font-size: 3rem; /* Бажано вказати розмір для контролю */
+  font-size: 3rem;
 }
 
 .heroBtn {
   display: inline-flex;
-  width: fit-content; /* Кнопка не буде розтягуватися на всю ширину */
+  width: fit-content;
   cursor: pointer;
   line-height: 4rem;
   padding: 0 2rem;
@@ -33,19 +33,20 @@
   color: #FFFFFF;
   border: 2px solid #FFF;
   text-decoration: none;
-  transition: all 0.3s ease; /* Додано для плавного ефекту */
+  transition: all 0.3s ease;
+}
+.heroBtn:hover {
+  background-color: #FFF;
+  color: var(--accent);
 }
 
-/* --- АДАПТИВНА ВЕРСТКА --- */
-
-/* Планшети та невеликі екрани (до 992px) */
 @media (max-width: 992px) {
   .heroContainer {
     padding: 60px 30px;
   }
   
   .heroContentContainer {
-    width: 60%; /* Збільшуємо ширину тексту, бо екран вужчий */
+    width: 60%; 
   }
 
   .heroTitle {
@@ -53,18 +54,17 @@
   }
 }
 
-/* Мобільні пристрої (до 768px) */
 @media (max-width: 768px) {
   .heroContainer {
-    flex-direction: column; /* Контент стає в колонку */
-    text-align: center;     /* Центруємо текст */
+    flex-direction: column; 
+    text-align: center;   
     padding: 40px 20px;
   }
 
   .heroContentContainer {
-    width: 100%;           /* Текст на всю ширину */
-    text-align: center;    /* Центруємо елементи всередині */
-    align-items: center;   /* Центруємо кнопку */
+    width: 100%;           
+    text-align: center;    
+    align-items: center;   
   }
 
   .heroTitle {
@@ -72,7 +72,7 @@
   }
 
   .heroBtn {
-    margin-right: 0;       /* Прибираємо правий відступ на мобільних */
-    letter-spacing: 0.1rem; /* Трохи зменшуємо інтервал */
+    margin-right: 0;      
+    letter-spacing: 0.1rem; 
   }
 }

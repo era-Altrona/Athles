@@ -1,37 +1,47 @@
-import React, { useState } from 'react';
+import React, {useEffect} from 'react';
 import styles from './EmployeeModal.module.css';
 
-const EmployeeCard = ({ employee }) => {
-  const [isOpen, setIsOpen] = useState(false);
+export default function EmployeeModal({ employee, onClose }) {
 
-  // Функція для перемикання модалки
-  const toggleModal = () => setIsOpen(!isOpen);
+useEffect(() => {
+  if (employee) {
+    document.body.style.overflow = 'hidden'; 
+  } else {
+    document.body.style.overflow = 'auto'; 
+  }
+
+  return () => {
+    document.body.style.overflow = 'auto'; 
+  };
+   }, [employee]);
+
+  if (!employee) return null;
 
   return (
-    <div>
-      {/* Картка співробітника */}
-      <div style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '8px', cursor: 'pointer' }} onClick={toggleModal}>
-        <img src={employee.photo} alt={employee.name} style={{ width: '100px' }} />
-        <h3>{employee.name}</h3>
-      </div>
+    <div className={styles.overlay} onClick={onClose}>
+      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+        <button className={styles.closeBtn} onClick={onClose}>
+          &times;
+        </button>
 
-      {/* Модальне вікно (відображається лише якщо isOpen === true) */}
-      {isOpen && (
-        <div className={styles.overlay} onClick={toggleModal}>
-          <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-            <button className={styles.closeButton} onClick={toggleModal}>&times;</button>
-            
-            <div className={styles.content}>
-              <img className={styles.photo} src={employee.photo} alt={employee.name} />
-              <h2>{employee.name}</h2>
-              <p><strong>Посада:</strong> {employee.position}</p>
-              <p>{employee.details}</p>
+        <div className={styles.modalBody}>
+          {/* left side with photo */}
+          <div className={styles.modalImageSide}>
+            <img src={employee.photo} alt={employee.name} />
+          </div>
+
+          {/* Right side with text */}
+          <div className={styles.modalContentSide}>
+            <h2 className={styles.modalTitle}>{employee.name}</h2>
+            <span className={styles.modalSubtitle}>{employee.role}</span>
+            <div className={styles.divider}></div>
+            <div className={styles.modalText}>
+              {employee.details}
             </div>
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };
 
-export default EmployeeCard;

@@ -106,8 +106,8 @@
 }
 
 .submitBtn:hover {
-  background: #fff;
-  color: #000;
+   background-color: #FFF;
+  color: var(--accent);
 }
 
 .arrow {

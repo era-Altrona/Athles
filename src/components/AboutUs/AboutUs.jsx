@@ -5,7 +5,7 @@ export default function AboutUs() {
       <div className={style.container}>
         
         <div className={style.aboutUsContainer}>
-                    <h2 className={style.sectionTitle}>About us</h2>
+                    <h2 className={style.sectionTitle}>O nas</h2>
 <p className={style.description}>
            ATHLES to premium studio performance i fizjoterapii w Toruniu — miejsce, gdzie diagnozujemy, zanim zaczniemy działać.
 

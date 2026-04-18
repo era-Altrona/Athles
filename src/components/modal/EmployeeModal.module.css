@@ -1,48 +1,164 @@
-/* Основний контейнер для затінення фону */
+/* CONTAINER*/
+.container {
+  background-color: var(--bg);
+  padding: 50px 20px;
+}
+
+.grid {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+
+/* CARDS LIST */
+.card {
+  background-color: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 30px;
+  width: 300px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: 0.3s;
+}
+
+.card:hover {
+  border-color: var(--accent-border);
+  transform: translateY(-5px);
+}
+.modalContentSide {
+  overflow-y: auto;
+
+}
+.photoCard {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent);
+  margin-bottom: 20px;
+}
+
+.name { 
+  color: var(--text-h); 
+  margin-bottom: 5px; }
+.role { color: var(--text); font-size: 0.9rem; margin-bottom: 25px; }
+
+.button {
+  background-color: var(--accent-bg);
+  color: var(--text-h);
+  border: 1px solid var(--accent-border);
+  padding: 10px 25px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.button:hover { background-color: var(--accent); }
+
+/*   MODAL WINDOW  */
 .overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.75); /* Затінення */
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  padding: 20px;
 }
 
-/* Сама модалка */
 .modal {
-  background: white;
-  padding: 2rem;
-  border-radius: 12px;
-  max-width: 500px;
-  width: 90%;
+  background-color: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  max-width: 900px; 
+  width: 100%;
+  max-height: 85vh;
   position: relative;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-}
-
-.closeButton {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  border: none;
-  background: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.content {
+  overflow: hidden;
+  box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 1rem;
 }
 
-.photo {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
+.modalBody {
+  display: flex;
+flex: 1;
+min-height: 0;
+  padding: 1rem;
+  flex-grow: 1;
+}
+
+@media (max-width: 768px) {
+  .modalBody { flex-direction: column; }
+  .modal { overflow-y: auto; }
+}
+
+.modalImageSide {
+  flex: 1;
+  background-color: var(--code-bg);
+  min-height: 300px;
+}
+
+.modalImageSide img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+}
+
+.modalContentSide {
+  flex: 1.5;
+  padding: 40px;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.modalTitle {
+  color: var(--text-h);
+  font-size: 2rem;
+  margin: 0;
+}
+
+.modalSubtitle {
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.divider {
+  height: 2px;
+  width: 50px;
+  background-color: var(--accent);
+  margin: 20px 0;
+}
+
+.modalText {
+  color: var(--text);
+  line-height: 1.7;
+  white-space: pre-line;
+  font-size: 1rem;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  color: var(--text-h);
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  font-size: 20px;
 }
