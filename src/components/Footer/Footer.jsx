@@ -1,4 +1,4 @@
-import style from '../css/footer.module.css';
+import style from './footer.module.css';
 import { FaInstagram, FaEnvelope } from 'react-icons/fa'; // Приклад іконок
 import { SiReebok } from 'react-icons/si'; // Або інша схожа іконка
 

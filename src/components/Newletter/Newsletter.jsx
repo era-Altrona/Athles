@@ -1,4 +1,4 @@
-import style from '../css/newsletter.module.css';
+import style from './newsletter.module.css';
 
 export default function Newsletter() {
   return (

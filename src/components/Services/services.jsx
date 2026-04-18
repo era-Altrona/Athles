@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from '../css/services.module.css';
+import styles from './services.module.css';
 
 export default function Services() {
   return (

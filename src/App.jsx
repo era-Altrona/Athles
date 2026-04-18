@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./components/header";
-import Hero from "./components/hero";
-import AboutUs from "./components/aboutUs";
-import Services from "./components/services";
-import Footer from "./components/footer";
-import Newsletter from "./components/Newsletter";
-import Price from "./price/Price";
+import Header from "./components/Header/header";
+import Hero from "./components/Hero/hero";
+import AboutUs from "./components/AboutUs/aboutUs";
+import Services from "./components/Services/services";
+import Footer from "./components/Footer/footer";
+import Newsletter from "./components/Newletter/Newsletter";
+import Price from "./components/price/Price";
 import "./css/background.css";
 
 export default function App() {
