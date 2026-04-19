@@ -86,15 +86,15 @@
   background-color: #ccc;
 }
 .socialLink svg {
-  color: #ffffff; /* Початковий колір (білий) */
+  color: #ffffff; 
   transition: color 0.3s ease;
 }
 
 .socialLink:hover svg {
-  color: #a31621; /* Колір при наведенні (червоний Athles) */
+  color: #a31621; 
 }
 
-/* Адаптивність для мобільних пристроїв */
+/* mobile adaptation */
 @media (max-width: 768px) {
   .container {
     flex-direction: column;

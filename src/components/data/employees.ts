@@ -11,11 +11,10 @@ Jako trener i sportowiec łączę dynamikę z kortu z konkretną pracą nad sił
   },
   {
     id: 2,
-    name: "Mateusz Nastula",
+    name: "Mateusz",
     role: "trener",
     photo: "/Mateusz.jpeg",
-    details: `
-Jestem fizjoterapeutą i trenerem od 2018 roku, ze sportem związanym od dziecka. Przez 11 lat pływałem zawodowo, co dało mi fundament, na którym buduję całą swoją pracę z ludźmi do dziś.
+    details: `Jestem fizjoterapeutą i trenerem od 2018 roku, ze sportem związanym od dziecka. Przez 11 lat pływałem zawodowo, co dało mi fundament, na którym buduję całą swoją pracę z ludźmi do dziś.
 Po studiach fizjoterapeutycznych przez kilka lat pracowałem w różnych ośrodkach rehabilitacyjnych i gabinetach, zdobywając doświadczenie w rehabilitacji sportowców oraz pacjentów z różnorodnymi schorzeniami. To właśnie ta różnorodność nauczyła mnie czegoś, czego nie ma w żadnym podręczniku: empatii i naprawdę indywidualnego podejścia do każdej osoby.  Specjalizuję się w rehabilitacji ortopedycznej, a szczególnie bliskie mi są kolana po operacjach ACL.
 Hobbystycznie jestem trenerem medycznym i trenerem przygotowania motorycznego. Na swoim koncie mam między sporo złotych medali w różnych dyscyplinach.
 

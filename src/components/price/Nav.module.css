@@ -35,15 +35,15 @@
 }
 
 .cta {
-  background: var(--red) !important;
-  color: var(--white) !important;
+  background: var(--red);
+  color: var(--white);
   padding: 8px 20px;
   border-radius: 2px;
   font-weight: 600;
 }
 
 .cta:hover {
-  background: var(--red-dark) !important;
+  background: var(--red-dark);
 }
 
 @media (max-width: 900px) {
