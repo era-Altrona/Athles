@@ -7,6 +7,7 @@ import Footer from "./components/Footer/Footer";
 import Newsletter from "./components/Newletter/Newsletter";
 import Price from "./components/price/Price";
 import Employees from "./components/Employees/Employees";
+import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
 import "./css/background.css";
 
 export default function App() {
@@ -14,10 +15,10 @@ export default function App() {
     <Router>
       <div className="svgBackground">
         <main>
+          
           <Routes>
             <Route path="/" element={
               <>  
-                <Header />
                 <Hero />
                 <AboutUs />
                 <Employees />
@@ -27,6 +28,7 @@ export default function App() {
             } />
 
             <Route path="/price" element={<Price />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           </Routes>
         </main>
 

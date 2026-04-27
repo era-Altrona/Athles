@@ -1,6 +1,7 @@
 import style from './footer.module.css';
 import { FaInstagram, FaEnvelope } from 'react-icons/fa'; 
 import { SiReebok } from 'react-icons/si'; 
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
@@ -15,12 +16,11 @@ export default function Footer() {
 </p>
           <p className={style.details}>NIP: 8792773749</p>
           <a href="mailto:kontakt@athles.pl" className={style.link}>kontakt@athles.pl</a>
-          <a href="#" className={style.link}>Polityka prywatności</a>
+          <Link to="/privacy-policy" className={style.link}>Polityka prywatności</Link>
         </div>
 
         {/* right side */}
         <div className={style.socialsBlock}>
-          <span className={style.hashtag}># <span className={style.red}>N O M</span> E R C Y</span>
           
           <div className={style.iconContainer}>
             <a href="mailto:kontakt@athles.pl" className={style.socialIcon}><FaEnvelope /></a>

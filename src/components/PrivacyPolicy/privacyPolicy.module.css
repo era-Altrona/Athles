@@ -1,0 +1,90 @@
+.container {
+  min-height: 100vh;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+  font-family: var(--sans);
+}
+
+.contentCard {
+  max-width: 850px;
+  width: 100%;
+  background-color: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 50px;
+  box-shadow: var(--shadow);
+}
+
+.mainTitle {
+  font-family: var(--heading);
+  color: var(--text-h);
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 50px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.section {
+  margin-bottom: 40px;
+}
+
+.section h2 {
+  font-family: var(--heading);
+  color: var(--text-h);
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+
+.section p {
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0;
+}
+
+.list li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.list li::before {
+  content: "•";
+  color: var(--accent);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.link:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+  .contentCard {
+    padding: 25px;
+  }
+  
+  .mainTitle {
+    font-size: 1.6rem;
+  }
+}

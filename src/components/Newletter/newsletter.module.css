@@ -1,4 +1,4 @@
-.newsletterSection {
+.section {
   color: #fff;
   min-height: 500px;
   display: flex;
@@ -24,14 +24,10 @@
 }
 
 .title {
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 700;
   margin: 0 0 20px 0;
   letter-spacing: -1px;
-}
-
-.redLetter {
-  color: #a31621;
 }
 
 .subtitle {
@@ -112,6 +108,50 @@
 
 .arrow {
   font-size: 1.2rem;
+}
+/* style for select */
+.select {
+  width: 100%;
+  max-width: 502px; 
+  padding: 15px 25px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+  
+  /* delete standard arrow */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+/* add custom arrow */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+  background-size: 18px;
+}
+
+.select:focus {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.select option {
+  background-color: #1a1c2c; 
+  color: #fff;
+  padding: 10px;
+}
+
+.select:invalid,
+.select option[value=""] {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.form {
+  width: 100%;
 }
 
 @media (max-width: 600px) {
