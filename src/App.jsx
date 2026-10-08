@@ -137,9 +137,10 @@ function Header() {
             ["O nas", "o-nas"],
             ["Zespół", "zespol"],
             ["Oferta", "oferta"],
+            ["Sklep", "sklep"],
             ["Kontakt", "kontakt"],
           ].map(([label, id]) => (
-            <Link key={id} to={`/#${id}`} onClick={() => setOpen(false)}>
+            <Link key={id} to={id === "sklep" ? "/sklep" : `/#${id}`} onClick={() => setOpen(false)}>
               {label}
             </Link>
           ))}
@@ -630,6 +631,34 @@ function Footer() {
     </footer>
   );
 }
+const TRAINING_PATH = "/sklep/diagnostyka-konczyny-dolnej";
+function Shop() {
+  const [category, setCategory] = useState("Wszystkie");
+  return <section className="shop-page container">
+    <p className="eyebrow">ATHLES · EDUKACJA</p><h1>Sklep</h1>
+    <p className="lead">Szkolenia stacjonarne i kursy online. Wybierz temat i sprawdź program.</p>
+    <div className="shop-filters" aria-label="Kategorie produktów">{["Wszystkie", "Szkolenia w ATHLES", "Kursy online"].map(item => <button key={item} type="button" aria-pressed={category === item} onClick={() => setCategory(item)}>{item}</button>)}</div>
+    {category !== "Kursy online" ? <div className="shop-grid"><article className="shop-card">
+      <Link to={TRAINING_PATH}><img src="/szkolenia/diagnostyka-konczyny-dolnej.png" alt="Diagnostyka kończyny dolnej — 24 października 2026, Toruń" /></Link>
+      <div className="shop-card-copy"><p className="eyebrow">SZKOLENIE STACJONARNE</p><h2><Link to={TRAINING_PATH}>Diagnostyka kończyny dolnej</Link></h2><p>24.10.2026 · Toruń</p><p>Praktyczne szkolenie dla fizjoterapeutów i studentów fizjoterapii.</p><div className="shop-card-bottom"><strong>1299 zł</strong><Link className="button primary" to={TRAINING_PATH}>Zobacz szkolenie ↗</Link></div></div>
+    </article></div> : <div className="shop-empty"><h2>Kursy online</h2><p>Produkty pojawią się tutaj po uruchomieniu sprzedaży.</p></div>}
+  </section>;
+}
+function Training() {
+  return <article className="shop-page container">
+    <Link className="shop-back" to="/sklep">← Wróć do sklepu</Link>
+    <div className="training-grid"><img className="training-poster" src="/szkolenia/diagnostyka-konczyny-dolnej.png" alt="Diagnostyka kończyny dolnej — 24.10.2026, Toruń" />
+      <div><p className="eyebrow">SZKOLENIE W ATHLES</p><h1>Diagnostyka kończyny dolnej</h1><p className="lead">Praktyczne badanie biodra i kolana. Od wywiadu i hipotezy klinicznej do interpretacji wyników i decyzji o dalszym postępowaniu.</p>
+        <dl className="training-facts"><div><dt>Termin</dt><dd>24 października 2026</dd></div><div><dt>Miejsce</dt><dd>ATHLES Studio · Mazowiecka 70a, Toruń</dd></div><div><dt>Prowadzący</dt><dd>Mateusz Nastula</dd></div></dl>
+        <div className="training-price">1299 zł</div><p>Masz pytania o szkolenie lub zapisy?</p><a className="button primary" href="mailto:kontakt@athles.pl?subject=Diagnostyka%20ko%C5%84czyny%20dolnej%2024.10.2026">Napisz w sprawie szkolenia ↗</a>
+      </div></div>
+    <div className="training-description"><section><p className="eyebrow">DLA KOGO</p><h2>Fizjoterapeuci i studenci fizjoterapii</h2><p>Szkolenie jest przeznaczone dla osób, które chcą uporządkować badanie pacjenta z problemem kończyny dolnej i ćwiczyć interpretację danych z wywiadu, badania funkcjonalnego oraz testów klinicznych.</p></section>
+    <section><p className="eyebrow">CELE SZKOLENIA</p><h2>Czego nauczysz się podczas kursu?</h2><ul className="training-outcomes"><li>Uporządkować badanie biodra i kolana — od wywiadu do decyzji o dalszym postępowaniu.</li><li>Dobierać testy do hipotezy klinicznej i interpretować ich wyniki w kontekście całego badania.</li><li>Rozpoznawać sygnały alarmowe i wskazania do dalszej konsultacji.</li><li>Planować ponowną ocenę oraz określać, na jakie pytanie ma odpowiedzieć diagnostyka obrazowa.</li><li>Wyjaśniać pacjentowi wnioski z badania i niepewność diagnostyczną.</li></ul></section>
+    <section><p className="eyebrow">FORMA ZAJĘĆ</p><h2>Pokaz, praktyka i omówienie przypadków</h2><p>Prowadzący demonstruje badanie, a uczestnicy ćwiczą techniki w parach lub małych zespołach, zamieniając się rolami. Ćwiczenia odbywają się na zdrowych partnerach; dane pacjentów i sytuacje kliniczne są przedstawiane w formie symulowanych przypadków.</p><p>Każdy region omawiamy według tej samej kolejności: wywiad i bezpieczeństwo, badanie funkcji, dobór testów, interpretacja wyników i decyzja o dalszym postępowaniu.</p></section>
+    <section><p className="eyebrow">AGENDA</p><h2>Program szkolenia</h2><p>Rozumowanie kliniczne, badanie biodra i kolana oraz praca na przypadkach klinicznych.</p><ol className="training-agenda"><li><div className="agenda-heading"><span className="agenda-number">01</span><h3>Rozumowanie kliniczne i bezpieczeństwo</h3></div><p>Jak uporządkować badanie i podjąć bezpieczną decyzję.</p><ul><li>Wywiad, hipotezy kliniczne i ocena prawdopodobieństwa rozpoznania przed badaniem oraz po nim.</li><li>Czułość, swoistość i ilorazy wiarygodności — wykorzystanie wyników testów w praktyce.</li><li>Sygnały alarmowe: podejrzenie złamania, zakrzepicy, zakażenia stawu, zaburzeń nerwowo-naczyniowych i urazu przeciążeniowego kości.</li><li>Kiedy kontynuować badanie, a kiedy skierować pacjenta na dalszą konsultację.</li></ul></li><li><div className="agenda-heading"><span className="agenda-number">02</span><h3>Biodro</h3></div><p>Badanie pacjenta z bólem pachwiny lub bocznej okolicy biodra.</p><ul><li>Wywiad, lokalizacja objawów i obciążenia; różnicowanie dolegliwości miejscowych i bólu przeniesionego.</li><li>Ocena chodu, przysiadu oraz czynnego i biernego zakresu ruchu.</li><li>FADIR, palpacja okolicy krętarza i oporowane odwodzenie — dobór prób oraz ograniczenia ich interpretacji.</li><li>Ćwiczenie badania w parach i omówienie przypadków klinicznych.</li></ul></li><li><div className="agenda-heading"><span className="agenda-number">03</span><h3>Kolano</h3></div><p>Od mechanizmu urazu do badania więzadeł, łąkotek i bólu rzepkowo-udowego.</p><ul><li>Mechanizm urazu, wysięk, ograniczenie wyprostu, blokowanie i tolerancja obciążenia.</li><li>Reguły Ottawa Knee Rules w podejmowaniu decyzji o RTG.</li><li>Badanie ACL: Lachman, szuflada przednia i pivot shift; wpływ bólu i napięcia obronnego na wynik.</li><li>Podejrzenie uszkodzenia łąkotki: palpacja szpary stawowej, McMurray i Thessaly oraz ograniczenia tych prób.</li><li>Ból rzepkowo-udowy: przysiad i step-down. Praktyka na stanowiskach i łączenie wyników badania.</li></ul></li><li><div className="agenda-heading"><span className="agenda-number">04</span><h3>Integracja i przypadki kliniczne</h3></div><p>Przełożenie całego badania na plan dalszego postępowania.</p><ul><li>Łączenie wywiadu, badania funkcjonalnego, badania regionu i celowanych testów.</li><li>Weryfikacja hipotez, uzasadnienie decyzji oraz zaplanowanie dalszej oceny.</li><li>Komunikowanie wyników i niepewności diagnostycznej pacjentowi.</li></ul></li></ol></section>
+    <section className="training-teacher"><img src="/Mateusz.jpeg" alt="Mateusz Nastula" loading="lazy"/><div><p className="eyebrow">PROWADZĄCY</p><h2>Mateusz Nastula</h2><p>Fizjoterapeuta i trener przygotowania motorycznego. Prowadzi ATHLES Studio w Toruniu.</p></div></section></div>
+  </article>;
+}
 export default function App() {
   return (
     <Router>
@@ -641,6 +670,8 @@ export default function App() {
       <main id="main">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/sklep" element={<Shop />} />
+          <Route path="/sklep/diagnostyka-konczyny-dolnej" element={<Training />} />
           <Route path="/privacy-policy" element={<Privacy />} />
           <Route path="/regulamin" element={<Terms />} />
           <Route path="/price" element={<Navigate to="/#oferta" replace />} />
