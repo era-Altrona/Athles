@@ -111,7 +111,7 @@ function Header() {
         <Link
           to="/"
           className="brand"
-          aria-label="ATHLES — strona główna"
+          aria-label="ATHLES: strona główna"
           onClick={() => setOpen(false)}
         >
           <img src="/Athles_Sygnet_Color.svg" alt="" width="40" height="40" />
@@ -330,15 +330,15 @@ function Home() {
             <div className="package-grid">
               <div>
                 <h3>Z Mateuszem</h3>
-                <p>3 spotkania — 585 zł</p>
-                <p>7 spotkań — 1 295 zł</p>
-                <p>12 spotkań — 2 160 zł</p>
+                <p>3 spotkania: 585 zł</p>
+                <p>7 spotkań: 1 295 zł</p>
+                <p>12 spotkań: 2 160 zł</p>
               </div>
               <div>
                 <h3>Z trenerami</h3>
-                <p>3 treningi — 510 zł</p>
-                <p>7 treningów — 1 155 zł</p>
-                <p>12 treningów — 1 920 zł</p>
+                <p>3 treningi: 510 zł</p>
+                <p>7 treningów: 1 155 zł</p>
+                <p>12 treningów: 1 920 zł</p>
               </div>
             </div>
             <Booking className="text-link">Sprawdź pakiety w Booksy</Booking>
@@ -396,7 +396,7 @@ function Home() {
             <aside className="nutrition-specialist">
               <img
                 src="/Wiktoria.jpeg"
-                alt="Wiktoria Nastula — dietetyk kliniczny i psychodietetyk w ATHLES"
+                alt="Wiktoria Nastula: dietetyk kliniczny i psychodietetyk w ATHLES"
                 loading="lazy"
               />
               <div>
@@ -489,7 +489,7 @@ function Home() {
         <div className="container contact-grid">
           <div>
             <p className="eyebrow">KONTAKT</p>
-            <h2>ATHLES Studio — kontakt i dojazd</h2>
+            <h2>ATHLES Studio: kontakt i dojazd</h2>
             <address>
               <strong>Mazowiecka 70a</strong>
               <br />
@@ -631,7 +631,20 @@ function Footer() {
     </footer>
   );
 }
-const TRAINING_PATH = "/sklep/diagnostyka-konczyny-dolnej";
+const TRAINING_PATH = "/sklep/athles-method-kurs-treningowy-modul-i";
+const TRAINING_PAYMENT = "https://buy.stripe.com/dRm5kCeuj6Q198gcTK7kc00";
+const TRAINING_NAME = "ATHLES Method | Kurs Treningowy | Moduł I";
+const trainingBlocks = [
+  ["Cel + assessment", "Jakie informacje są potrzebne do zaplanowania treningu? Obserwacja, interpretacja i wykorzystanie oceny w podejmowaniu decyzji treningowych."],
+  ["Kolano + biodro", "Dobór zakresu ruchu, podparcia i konfiguracji ćwiczenia. Zadania jednostronne i obustronne, z większym udziałem kolana lub biodra, wielostawowe i izolowane. Otwarte i zamknięte łańcuchy kinematyczne w kontekście celu."],
+  ["Dawka", "Obciążenie, serie, powtórzenia, wysiłek i RIR, czyli powtórzenia pozostające w zapasie. Trening do upadku, objętość, częstotliwość i progresja."],
+  ["Tułów + historia bólu dolnego odcinka pleców", "Funkcje tułowia, przenoszenie siły i tolerowanie obciążenia. Neutralne ustawienie kręgosłupa, bracing i planowanie treningu osoby z historią niespecyficznego bólu pleców."],
+  ["Sposób wykonania", "Izometria, faza ekscentryczna i tempo. Intencja wykonania a rzeczywista prędkość ruchu. Trening siłowy i podstawy rozwijania mocy."],
+  ["Odpowiedź + decyzja", "Ocena wykonania, wyników i ich trendu, tolerancji oraz wykonalności programu. Wybór kolejnego kroku i rozróżnienie problemu z dawką od problemu z zadaniem."],
+];
+function TrainingBooking() {
+  return <a className="button primary" href={TRAINING_PAYMENT}>Zapisz się na szkolenie <span aria-hidden="true">↗</span></a>;
+}
 function Shop() {
   const [category, setCategory] = useState("Wszystkie");
   return <section className="shop-page container">
@@ -639,26 +652,49 @@ function Shop() {
     <p className="lead">Szkolenia stacjonarne i kursy online. Wybierz temat i sprawdź program.</p>
     <div className="shop-filters" aria-label="Kategorie produktów">{["Wszystkie", "Szkolenia w ATHLES", "Kursy online"].map(item => <button key={item} type="button" aria-pressed={category === item} onClick={() => setCategory(item)}>{item}</button>)}</div>
     {category !== "Kursy online" ? <div className="shop-grid"><article className="shop-card">
-      <Link to={TRAINING_PATH}><img src="/szkolenia/diagnostyka-konczyny-dolnej.png" alt="Diagnostyka kończyny dolnej — 24 października 2026, Toruń" /></Link>
-      <div className="shop-card-copy"><p className="eyebrow">SZKOLENIE STACJONARNE</p><h2><Link to={TRAINING_PATH}>Diagnostyka kończyny dolnej</Link></h2><p>24.10.2026 · Toruń</p><p>Praktyczne szkolenie dla fizjoterapeutów i studentów fizjoterapii.</p><div className="shop-card-bottom"><strong>1299 zł</strong><Link className="button primary" to={TRAINING_PATH}>Zobacz szkolenie ↗</Link></div></div>
+      <Link to={TRAINING_PATH}><img src="/image_athles.jpeg" alt="Grafika ATHLES" loading="lazy" /></Link>
+      <div className="shop-card-copy"><p className="eyebrow">SZKOLENIE STACJONARNE</p><h2><Link to={TRAINING_PATH}>{TRAINING_NAME}</Link></h2><p>24.10.2026 · Toruń</p><p>Praktyczny kurs dla trenerów i fizjoterapeutów. Dobór zadań, dawkowanie i decyzje o kolejnym treningu.</p><div className="shop-card-bottom"><strong>1299 zł</strong><Link className="button primary" to={TRAINING_PATH}>Zobacz szkolenie ↗</Link></div></div>
     </article></div> : <div className="shop-empty"><h2>Kursy online</h2><p>Produkty pojawią się tutaj po uruchomieniu sprzedaży.</p></div>}
   </section>;
 }
 function Training() {
+  useEffect(() => {
+    const previousTitle = document.title;
+    let meta = document.querySelector('meta[name="description"]');
+    const createdMeta = !meta;
+    if (!meta) {
+      meta = document.createElement("meta");
+      meta.name = "description";
+      document.head.appendChild(meta);
+    }
+    const previousDescription = meta.getAttribute("content");
+    document.title = TRAINING_NAME;
+    meta.setAttribute("content", "Praktyczny kurs treningowy ATHLES dla trenerów i fizjoterapeutów. Dobór zadań, dawkowanie i progresja treningu kolana, biodra i tułowia. Maksymalnie 10 osób.");
+    return () => {
+      document.title = previousTitle;
+      if (createdMeta) meta.remove();
+      else if (previousDescription === null) meta.removeAttribute("content");
+      else meta.setAttribute("content", previousDescription);
+    };
+  }, []);
   return <article className="shop-page container">
     <Link className="shop-back" to="/sklep">← Wróć do sklepu</Link>
-    <div className="training-grid"><img className="training-poster" src="/szkolenia/diagnostyka-konczyny-dolnej.png" alt="Diagnostyka kończyny dolnej — 24.10.2026, Toruń" />
-      <div><p className="eyebrow">SZKOLENIE W ATHLES</p><h1>Diagnostyka kończyny dolnej</h1><p className="lead">Praktyczne badanie biodra i kolana. Od wywiadu i hipotezy klinicznej do interpretacji wyników i decyzji o dalszym postępowaniu.</p>
-        <dl className="training-facts"><div><dt>Termin</dt><dd>24 października 2026</dd></div><div><dt>Miejsce</dt><dd>ATHLES Studio · Mazowiecka 70a, Toruń</dd></div><div><dt>Prowadzący</dt><dd>Mateusz Nastula</dd></div></dl>
-        <div className="training-price">1299 zł</div><p>Liczba miejsc: maksymalnie 10 osób.</p><a className="button primary" href="https://buy.stripe.com/dRm5kCeuj6Q198gcTK7kc00">Zapisz się i zapłać ↗</a><p>Masz pytania? <a href="mailto:kontakt@athles.pl">Napisz do nas</a>.</p>
+    <div className="training-grid"><img className="training-poster" src="/image_athles.jpeg" alt="Grafika ATHLES" />
+      <div><p className="eyebrow">SZKOLENIE STACJONARNE · TORUŃ</p><h1>{TRAINING_NAME}</h1><h2>Od wyboru ćwiczenia do decyzji o kolejnym treningu.</h2><p className="lead">Praktyczny kurs o planowaniu i modyfikowaniu treningu kolana, biodra oraz kompleksu lędźwiowo-miednicznego. Nauczysz się dobierać zadania, obciążenie i progresję do celu, możliwości osoby oraz jej odpowiedzi na trening.</p>
+        <dl className="training-facts"><div><dt>Termin</dt><dd>24 października 2026</dd></div><div><dt>Miejsce</dt><dd>ATHLES Studio · Mazowiecka 70a, Toruń</dd></div><div><dt>Forma</dt><dd>1 dzień · 360 minut dydaktycznych · 70-80% praktyki</dd></div><div><dt>Grupa</dt><dd>Maksymalnie 10 uczestników</dd></div><div><dt>Prowadzący</dt><dd>Mateusz Nastula</dd></div></dl>
+        <div className="training-price">1299 zł</div><TrainingBooking /><p>Masz pytania? <a href="mailto:kontakt@athles.pl">Napisz do nas</a>.</p>
       </div></div>
-    <div className="training-description"><section><p className="eyebrow">DLA KOGO</p><h2>Fizjoterapeuci i studenci fizjoterapii</h2><p>Szkolenie jest przeznaczone dla osób, które chcą uporządkować badanie pacjenta z problemem kończyny dolnej i ćwiczyć interpretację danych z wywiadu, badania funkcjonalnego oraz testów klinicznych.</p></section>
-    <section><p className="eyebrow">CELE SZKOLENIA</p><h2>Czego nauczysz się podczas kursu?</h2><ul className="training-outcomes"><li>Uporządkować badanie biodra i kolana — od wywiadu do decyzji o dalszym postępowaniu.</li><li>Dobierać testy do hipotezy klinicznej i interpretować ich wyniki w kontekście całego badania.</li><li>Rozpoznawać sygnały alarmowe i wskazania do dalszej konsultacji.</li><li>Planować ponowną ocenę oraz określać, na jakie pytanie ma odpowiedzieć diagnostyka obrazowa.</li><li>Wyjaśniać pacjentowi wnioski z badania i niepewność diagnostyczną.</li></ul></section>
-    <section><p className="eyebrow">FORMA ZAJĘĆ</p><h2>Pokaz, praktyka i omówienie przypadków</h2><p>Prowadzący demonstruje badanie, a uczestnicy ćwiczą techniki w parach lub małych zespołach, zamieniając się rolami. Ćwiczenia odbywają się na zdrowych partnerach; dane pacjentów i sytuacje kliniczne są przedstawiane w formie symulowanych przypadków.</p><p>Każdy region omawiamy według tej samej kolejności: wywiad i bezpieczeństwo, badanie funkcji, dobór testów, interpretacja wyników i decyzja o dalszym postępowaniu.</p></section>
-    <section><p className="eyebrow">AGENDA</p><h2>Program szkolenia</h2><p>Rozumowanie kliniczne, badanie biodra i kolana oraz praca na przypadkach klinicznych.</p><ol className="training-agenda"><li><div className="agenda-heading"><span className="agenda-number">01</span><h3>Rozumowanie kliniczne i bezpieczeństwo</h3></div><p>Jak uporządkować badanie i podjąć bezpieczną decyzję.</p><ul><li>Wywiad, hipotezy kliniczne i ocena prawdopodobieństwa rozpoznania przed badaniem oraz po nim.</li><li>Czułość, swoistość i ilorazy wiarygodności — wykorzystanie wyników testów w praktyce.</li><li>Sygnały alarmowe: podejrzenie złamania, zakrzepicy, zakażenia stawu, zaburzeń nerwowo-naczyniowych i urazu przeciążeniowego kości.</li><li>Kiedy kontynuować badanie, a kiedy skierować pacjenta na dalszą konsultację.</li></ul></li><li><div className="agenda-heading"><span className="agenda-number">02</span><h3>Biodro</h3></div><p>Badanie pacjenta z bólem pachwiny lub bocznej okolicy biodra.</p><ul><li>Wywiad, lokalizacja objawów i obciążenia; różnicowanie dolegliwości miejscowych i bólu przeniesionego.</li><li>Ocena chodu, przysiadu oraz czynnego i biernego zakresu ruchu.</li><li>FADIR, palpacja okolicy krętarza i oporowane odwodzenie — dobór prób oraz ograniczenia ich interpretacji.</li><li>Ćwiczenie badania w parach i omówienie przypadków klinicznych.</li></ul></li><li><div className="agenda-heading"><span className="agenda-number">03</span><h3>Kolano</h3></div><p>Od mechanizmu urazu do badania więzadeł, łąkotek i bólu rzepkowo-udowego.</p><ul><li>Mechanizm urazu, wysięk, ograniczenie wyprostu, blokowanie i tolerancja obciążenia.</li><li>Reguły Ottawa Knee Rules w podejmowaniu decyzji o RTG.</li><li>Badanie ACL: Lachman, szuflada przednia i pivot shift; wpływ bólu i napięcia obronnego na wynik.</li><li>Podejrzenie uszkodzenia łąkotki: palpacja szpary stawowej, McMurray i Thessaly oraz ograniczenia tych prób.</li><li>Ból rzepkowo-udowy: przysiad i step-down. Praktyka na stanowiskach i łączenie wyników badania.</li></ul></li><li><div className="agenda-heading"><span className="agenda-number">04</span><h3>Integracja i przypadki kliniczne</h3></div><p>Przełożenie całego badania na plan dalszego postępowania.</p><ul><li>Łączenie wywiadu, badania funkcjonalnego, badania regionu i celowanych testów.</li><li>Weryfikacja hipotez, uzasadnienie decyzji oraz zaplanowanie dalszej oceny.</li><li>Komunikowanie wyników i niepewności diagnostycznej pacjentowi.</li></ul></li></ol></section>
-    <section className="training-teacher"><img src="/Mateusz.jpeg" alt="Mateusz Nastula" loading="lazy"/><div><p className="eyebrow">PROWADZĄCY</p><h2>Mateusz Nastula</h2><p>Fizjoterapeuta i trener przygotowania motorycznego. Prowadzi ATHLES Studio w Toruniu.</p></div></section></div>
+    <div className="training-description">
+      <section><p className="eyebrow">DLA KOGO</p><h2>Dla trenerów i fizjoterapeutów</h2><p>Dla trenerów personalnych, trenerów przygotowania motorycznego, trenerów medycznych, fizjoterapeutów wykorzystujących trening oraz studentów ostatnich lat kierunków związanych z fizjoterapią i treningiem.</p><p>Szczególnie jeśli znasz już wiele ćwiczeń, ale chcesz lepiej rozumieć, które wybrać, jak je dawkować i kiedy zmienić. Punktem wyjścia jest znajomość podstawowych ćwiczeń.</p></section>
+      <section><p className="eyebrow">EFEKTY SZKOLENIA</p><h2>Czego się nauczysz?</h2><ul className="training-outcomes"><li>Dobierać ćwiczenia i ich warianty do konkretnego celu.</li><li>Ustalać obciążenie, serie, powtórzenia i poziom wysiłku.</li><li>Wykorzystywać izometrię, ekscentrykę, tempo i intencję wykonania.</li><li>Oceniać odpowiedź na trening i planować kolejny krok.</li><li>Rozróżniać, kiedy zmienić dawkę, a kiedy samo zadanie.</li></ul><h3>Model ATHLES Method</h3><p><strong>CEL → ZADANIE → DAWKA → ODPOWIEDŹ → DECYZJA</strong></p><p>Określasz cel, wybierasz zadanie, ustalasz jego parametry i oceniasz reakcję osoby. Następnie podejmujesz decyzję: <strong>zostaw, zwiększ, zmniejsz lub zmień.</strong></p></section>
+      <section><p className="eyebrow">AGENDA</p><h2>Program szkolenia</h2><ol className="training-agenda">{trainingBlocks.map(([title, text], index) => <li key={title}><div className="agenda-heading"><span className="agenda-number">{String(index + 1).padStart(2, "0")}</span><h3>{title}</h3></div><p>{text}</p></li>)}</ol></section>
+      <section><p className="eyebrow">PRAKTYKA I CASE STUDIES</p><h2>Jak pracujemy?</h2><p>Około <strong>70-80% szkolenia stanowi praktyka</strong>. Wykonujesz i modyfikujesz zadania, dobierasz dawkę oraz uzasadniasz swoje decyzje.</p><p>Pracujemy na czterech przypadkach:</p><ul className="training-outcomes"><li>Osoba po rekonstrukcji ACL, dopuszczona do treningu.</li><li>Osoba z historią niespecyficznego bólu dolnego odcinka pleców.</li><li>Amator sportów zespołowych przechodzący od siły do pracy nad mocą.</li><li>Osoba 40+, której dobrze dobrane ćwiczenia wymagają zmniejszenia dawki.</li></ul><p>Przypadki służą nauce planowania treningu i podejmowania decyzji.</p></section>
+      <section className="training-teacher"><img src="/Mateusz.jpeg" alt="Mateusz Nastula" loading="lazy"/><div><p className="eyebrow">PROWADZĄCY</p><h2>Mateusz Nastula</h2><p>Fizjoterapeuta i trener przygotowania motorycznego. Prowadzi ATHLES Studio w Toruniu.</p></div></section>
+      <section><p className="eyebrow">ZAPISY</p><h2>Przećwicz decyzje, które podejmujesz w swojej pracy.</h2><p>Dobierz zadanie, ustal jego dawkę i zdecyduj, co zrobić dalej. Dołącz do ATHLES Method i przećwicz ten proces na konkretnych przypadkach.</p><p>24 października 2026 · ATHLES Studio, Toruń · 1299 zł</p><TrainingBooking /></section>
+    </div>
   </article>;
 }
+
 export default function App() {
   return (
     <Router>
@@ -671,7 +707,8 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/sklep" element={<Shop />} />
-          <Route path="/sklep/diagnostyka-konczyny-dolnej" element={<Training />} />
+          <Route path={TRAINING_PATH} element={<Training />} />
+          <Route path="/sklep/diagnostyka-konczyny-dolnej" element={<Navigate to={TRAINING_PATH} replace />} />
           <Route path="/privacy-policy" element={<Privacy />} />
           <Route path="/regulamin" element={<Terms />} />
           <Route path="/price" element={<Navigate to="/#oferta" replace />} />
