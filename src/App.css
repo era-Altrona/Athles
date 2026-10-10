@@ -1429,3 +1429,89 @@ h3 {
 .shop-page{padding-top:64px;padding-bottom:80px;min-height:65vh}.shop-page h1{font-size:clamp(2rem,4vw,3.7rem);line-height:1.15;overflow-wrap:anywhere}.shop-filters{display:flex;gap:12px;flex-wrap:wrap;margin:32px 0}.shop-filters button{padding:12px 20px;border:1px solid #002040;background:white;color:#002040;cursor:pointer;font:inherit}.shop-filters button[aria-pressed=true]{background:#002040;color:white}.shop-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}.shop-card{border:1px solid #dce1e6;background:white}.shop-card img{display:block;width:100%;height:auto}.shop-card-copy{padding:24px}.shop-card h2{font-size:1.5rem;line-height:1.25}.shop-card h2 a{text-decoration:none}.shop-card-bottom{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:24px}.shop-card-bottom strong{font-size:1.5rem}.shop-empty{padding:40px;background:#f3f5f7}.shop-back{display:inline-block;margin-bottom:32px}.training-grid{display:grid;grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr);gap:56px;align-items:start}.training-poster{display:block;width:100%;height:auto}.training-facts{margin:32px 0}.training-facts div{padding:12px 0;border-bottom:1px solid #dce1e6}.training-facts dt{font-size:.85rem;color:#667485}.training-facts dd{margin:4px 0 0}.training-price{font-size:2.3rem;font-weight:800}.training-description{max-width:900px;margin:64px auto 0}.training-description section{margin-bottom:56px}.training-program{padding-left:24px}.training-program li{padding:12px 0}.training-program p{margin-top:6px}.training-teacher{display:flex;gap:32px;align-items:center}.training-teacher img{width:180px;height:220px;object-fit:cover}@media(max-width:900px){.shop-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.training-grid{grid-template-columns:1fr;gap:32px}.training-poster{max-width:480px}}@media(max-width:600px){.shop-grid{grid-template-columns:1fr}.shop-page{padding-top:32px}.training-teacher{flex-direction:column;align-items:start}}
 
 .training-outcomes{padding-left:22px}.training-outcomes li{margin:12px 0}.training-agenda{list-style:none;padding:0;margin-top:32px}.training-agenda>li{border-top:1px solid #dce1e6;padding:28px 0}.agenda-heading{display:flex;gap:18px;align-items:baseline}.agenda-heading h3{margin:0;flex:1;font-size:1.35rem}.agenda-number{color:#7d2031;font-weight:800}.agenda-duration{white-space:nowrap;color:#667485;font-size:.95rem}.training-agenda ul{padding-left:22px}.training-agenda ul li{margin:10px 0}.training-agenda p{margin:14px 0}@media(max-width:600px){.agenda-heading{gap:10px;flex-wrap:wrap}.agenda-heading h3{flex-basis:75%}.agenda-duration{margin-left:32px}}
+
+/* ATHLES Method: full course content and accessible native disclosures. */
+.training-introduction p,
+.training-details-body p,
+.training-description > section > p {
+  line-height: 1.75;
+  margin: 0 0 20px;
+}
+.training-accordions {
+  margin-top: 30px;
+  border-top: 1px solid #dce1e6;
+}
+.training-details {
+  border-bottom: 1px solid #dce1e6;
+}
+.training-details > summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 28px;
+  gap: 10px 20px;
+  padding: 26px 0;
+  cursor: pointer;
+  list-style: none;
+}
+.training-details > summary::-webkit-details-marker {
+  display: none;
+}
+.training-details > summary::marker {
+  content: "";
+}
+.training-details > summary:focus-visible {
+  outline: 2px solid #b21212;
+  outline-offset: 6px;
+}
+.training-block-label {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #002040;
+}
+.training-block-subtitle {
+  grid-column: 1;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.training-disclosure-icon {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  color: #b21212;
+  font-size: 1.65rem;
+  text-align: center;
+}
+.training-disclosure-icon::before {
+  content: "+";
+}
+.training-details[open] .training-disclosure-icon::before {
+  content: "−";
+}
+.training-details-body {
+  padding: 0 0 28px;
+}
+.training-details-body .training-outcomes {
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+.training-details-body .training-workshop {
+  padding: 20px;
+  margin: 24px 0 0;
+  background: #f3f5f7;
+  border-left: 3px solid #b21212;
+}
+.training-registration {
+  border-top: 1px solid #dce1e6;
+  padding-top: 32px;
+}
+@media (max-width: 600px) {
+  .training-details > summary {
+    padding: 22px 0;
+    gap: 8px 12px;
+  }
+  .training-block-label {
+    font-size: 1.05rem;
+  }
+  .training-details-body .training-workshop {
+    padding: 16px;
+  }
+}

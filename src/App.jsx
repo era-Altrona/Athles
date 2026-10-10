@@ -633,15 +633,7 @@ function Footer() {
 }
 const TRAINING_PATH = "/sklep/athles-method-kurs-treningowy-modul-i";
 const TRAINING_PAYMENT = "https://buy.stripe.com/dRm5kCeuj6Q198gcTK7kc00";
-const TRAINING_NAME = "ATHLES Method | Kurs Treningowy | Moduł I";
-const trainingBlocks = [
-  ["Cel + assessment", "Jakie informacje są potrzebne do zaplanowania treningu? Obserwacja, interpretacja i wykorzystanie oceny w podejmowaniu decyzji treningowych."],
-  ["Kolano + biodro", "Dobór zakresu ruchu, podparcia i konfiguracji ćwiczenia. Zadania jednostronne i obustronne, z większym udziałem kolana lub biodra, wielostawowe i izolowane. Otwarte i zamknięte łańcuchy kinematyczne w kontekście celu."],
-  ["Dawka", "Obciążenie, serie, powtórzenia, wysiłek i RIR, czyli powtórzenia pozostające w zapasie. Trening do upadku, objętość, częstotliwość i progresja."],
-  ["Tułów + historia bólu dolnego odcinka pleców", "Funkcje tułowia, przenoszenie siły i tolerowanie obciążenia. Neutralne ustawienie kręgosłupa, bracing i planowanie treningu osoby z historią niespecyficznego bólu pleców."],
-  ["Sposób wykonania", "Izometria, faza ekscentryczna i tempo. Intencja wykonania a rzeczywista prędkość ruchu. Trening siłowy i podstawy rozwijania mocy."],
-  ["Odpowiedź + decyzja", "Ocena wykonania, wyników i ich trendu, tolerancji oraz wykonalności programu. Wybór kolejnego kroku i rozróżnienie problemu z dawką od problemu z zadaniem."],
-];
+const TRAINING_NAME = "ATHLES Method | Kończyna Dolna";
 function TrainingBooking() {
   return <a className="button primary" href={TRAINING_PAYMENT}>Zapisz się na szkolenie <span aria-hidden="true">↗</span></a>;
 }
@@ -653,7 +645,7 @@ function Shop() {
     <div className="shop-filters" aria-label="Kategorie produktów">{["Wszystkie", "Szkolenia w ATHLES", "Kursy online"].map(item => <button key={item} type="button" aria-pressed={category === item} onClick={() => setCategory(item)}>{item}</button>)}</div>
     {category !== "Kursy online" ? <div className="shop-grid"><article className="shop-card">
       <Link to={TRAINING_PATH}><img src="/image_athles.jpeg" alt="Grafika ATHLES" loading="lazy" /></Link>
-      <div className="shop-card-copy"><p className="eyebrow">SZKOLENIE STACJONARNE</p><h2><Link to={TRAINING_PATH}>{TRAINING_NAME}</Link></h2><p>24.10.2026 · Toruń</p><p>Praktyczny kurs dla trenerów i fizjoterapeutów. Dobór zadań, dawkowanie i decyzje o kolejnym treningu.</p><div className="shop-card-bottom"><strong>1299 zł</strong><Link className="button primary" to={TRAINING_PATH}>Zobacz szkolenie ↗</Link></div></div>
+      <div className="shop-card-copy"><p className="eyebrow">SZKOLENIE STACJONARNE</p><h2><Link to={TRAINING_PATH}>{TRAINING_NAME}</Link></h2><p>24.10.2026 · Toruń</p><p>Praktyczna metodyka pracy z kończyną dolną i kręgosłupem. Od rehabilitacji do progresywnego treningu siłowego.</p><div className="shop-card-bottom"><strong>1299 zł</strong><Link className="button primary" to={TRAINING_PATH}>Zobacz szkolenie ↗</Link></div></div>
     </article></div> : <div className="shop-empty"><h2>Kursy online</h2><p>Produkty pojawią się tutaj po uruchomieniu sprzedaży.</p></div>}
   </section>;
 }
@@ -669,7 +661,7 @@ function Training() {
     }
     const previousDescription = meta.getAttribute("content");
     document.title = TRAINING_NAME;
-    meta.setAttribute("content", "Praktyczny kurs treningowy ATHLES dla trenerów i fizjoterapeutów. Dobór zadań, dawkowanie i progresja treningu kolana, biodra i tułowia. Maksymalnie 10 osób.");
+    meta.setAttribute("content", "ATHLES Method | Kończyna Dolna. Szkolenie stacjonarne w Toruniu: staw skokowy, kolano, biodro i LBP. 24.10.2026, 6 godzin zajęć i około 78% praktyki. 1299 zł.");
     return () => {
       document.title = previousTitle;
       if (createdMeta) meta.remove();
@@ -680,17 +672,119 @@ function Training() {
   return <article className="shop-page container">
     <Link className="shop-back" to="/sklep">← Wróć do sklepu</Link>
     <div className="training-grid"><img className="training-poster" src="/image_athles.jpeg" alt="Grafika ATHLES" />
-      <div><p className="eyebrow">SZKOLENIE STACJONARNE · TORUŃ</p><h1>{TRAINING_NAME}</h1><h2>Od wyboru ćwiczenia do decyzji o kolejnym treningu.</h2><p className="lead">Praktyczny kurs o planowaniu i modyfikowaniu treningu kolana, biodra oraz kompleksu lędźwiowo-miednicznego. Nauczysz się dobierać zadania, obciążenie i progresję do celu, możliwości osoby oraz jej odpowiedzi na trening.</p>
-        <dl className="training-facts"><div><dt>Termin</dt><dd>24 października 2026</dd></div><div><dt>Miejsce</dt><dd>ATHLES Studio · Mazowiecka 70a, Toruń</dd></div><div><dt>Forma</dt><dd>1 dzień · 360 minut dydaktycznych · 70-80% praktyki</dd></div><div><dt>Grupa</dt><dd>Maksymalnie 10 uczestników</dd></div><div><dt>Prowadzący</dt><dd>Mateusz Nastula</dd></div></dl>
+      <div><p className="eyebrow">SZKOLENIE STACJONARNE · TORUŃ</p><h1>{TRAINING_NAME}</h1><p className="lead"><strong>Praktyczna metodyka pracy z kończyną dolną i kręgosłupem. Od rehabilitacji do progresywnego treningu siłowego.</strong></p>
+        <dl className="training-facts"><div><dt>Termin</dt><dd>24 października 2026</dd></div><div><dt>Miejsce</dt><dd>ATHLES Studio · Mazowiecka 70a, Toruń</dd></div><div><dt>Forma</dt><dd>1 dzień · 6 godzin zajęć · 4 bloki po 90 minut</dd></div><div><dt>Praktyka</dt><dd>Około 78% zajęć</dd></div><div><dt>Grupa</dt><dd>Maksymalnie 10 uczestników</dd></div><div><dt>Prowadzący</dt><dd>Mateusz Nastula</dd></div></dl>
         <div className="training-price">1299 zł</div><TrainingBooking /><p>Masz pytania? <a href="mailto:kontakt@athles.pl">Napisz do nas</a>.</p>
       </div></div>
     <div className="training-description">
-      <section><p className="eyebrow">DLA KOGO</p><h2>Dla trenerów i fizjoterapeutów</h2><p>Dla trenerów personalnych, trenerów przygotowania motorycznego, trenerów medycznych, fizjoterapeutów wykorzystujących trening oraz studentów ostatnich lat kierunków związanych z fizjoterapią i treningiem.</p><p>Szczególnie jeśli znasz już wiele ćwiczeń, ale chcesz lepiej rozumieć, które wybrać, jak je dawkować i kiedy zmienić. Punktem wyjścia jest znajomość podstawowych ćwiczeń.</p></section>
-      <section><p className="eyebrow">EFEKTY SZKOLENIA</p><h2>Czego się nauczysz?</h2><ul className="training-outcomes"><li>Dobierać ćwiczenia i ich warianty do konkretnego celu.</li><li>Ustalać obciążenie, serie, powtórzenia i poziom wysiłku.</li><li>Wykorzystywać izometrię, ekscentrykę, tempo i intencję wykonania.</li><li>Oceniać odpowiedź na trening i planować kolejny krok.</li><li>Rozróżniać, kiedy zmienić dawkę, a kiedy samo zadanie.</li></ul><h3>Model ATHLES Method</h3><p><strong>CEL → ZADANIE → DAWKA → ODPOWIEDŹ → DECYZJA</strong></p><p>Określasz cel, wybierasz zadanie, ustalasz jego parametry i oceniasz reakcję osoby. Następnie podejmujesz decyzję: <strong>zostaw, zwiększ, zmniejsz lub zmień.</strong></p></section>
-      <section><p className="eyebrow">AGENDA</p><h2>Program szkolenia</h2><ol className="training-agenda">{trainingBlocks.map(([title, text], index) => <li key={title}><div className="agenda-heading"><span className="agenda-number">{String(index + 1).padStart(2, "0")}</span><h3>{title}</h3></div><p>{text}</p></li>)}</ol></section>
-      <section><p className="eyebrow">PRAKTYKA I CASE STUDIES</p><h2>Jak pracujemy?</h2><p>Około <strong>70-80% szkolenia stanowi praktyka</strong>. Wykonujesz i modyfikujesz zadania, dobierasz dawkę oraz uzasadniasz swoje decyzje.</p><p>Pracujemy na czterech przypadkach:</p><ul className="training-outcomes"><li>Osoba po rekonstrukcji ACL, dopuszczona do treningu.</li><li>Osoba z historią niespecyficznego bólu dolnego odcinka pleców.</li><li>Amator sportów zespołowych przechodzący od siły do pracy nad mocą.</li><li>Osoba 40+, której dobrze dobrane ćwiczenia wymagają zmniejszenia dawki.</li></ul><p>Przypadki służą nauce planowania treningu i podejmowania decyzji.</p></section>
+      <section className="training-introduction"><p>Szkolenie stacjonarne ATHLES Method koncentruje się na <strong>praktycznych strategiach przywracania i rozwijania sprawności ruchowej</strong>, łącząc perspektywę fizjoterapeuty i trenera przygotowania motorycznego.</p>
+<p>Uczestnicy poznają metodykę pracy ze stawem skokowym, kolanowym, biodrowym oraz odcinkiem lędźwiowym kręgosłupa. Program obejmuje <strong>ocenę funkcjonalną, analizę mechaniki ruchu, strategie progresywnego obciążania oraz wykorzystanie różnych form pracy mięśniowej</strong> w procesie rehabilitacji i treningu.</p>
+<p>Kurs pokazuje, jak wykorzystać izometrię, trening ekscentryczny i koncentryczny oraz propriocepcję w zależności od aktualnych możliwości pacjenta, charakteru ograniczeń i wymagań podejmowanej aktywności.</p>
+<p>Szczególny nacisk kładziemy na <strong>continuum przywracania sprawności</strong>, od podstawowych interwencji ruchowych po bardziej wymagające zadania siłowe i funkcjonalne. Omawiane rozwiązania opierają się na aktualnych wytycznych klinicznych, badaniach naukowych i doświadczeniu w pracy z pacjentami oraz osobami aktywnymi fizycznie.</p>
+<p><strong>Blisko 80% szkolenia stanowią zajęcia praktyczne</strong>, obejmujące ocenę funkcjonalną, demonstracje, analizę przypadków oraz pracę w parach. Uczestnicy poznają sposoby wykorzystania poszczególnych metod, możliwości ich modyfikacji i zasady stopniowego zwiększania wymagań treningowych.</p>
+<p>Szkolenie ma charakter warsztatowy. Każdy blok łączy niezbędne podstawy teoretyczne z praktycznym zastosowaniem omawianych zagadnień.</p></section>
+      <section><h2>RAMY KSZTAŁCENIA</h2><div className="training-accordions"><details className="training-details">
+<summary><span className="training-block-label">01 / STAW SKOKOWY</span><span className="training-block-subtitle"><strong>Kinezjologia, mechanika ruchu i continuum przywracania sprawności</strong></span><span className="training-disclosure-icon" aria-hidden="true"></span></summary>
+<div className="training-details-body"><p>Blok koncentruje się na funkcjonowaniu stawu skokowego, ze szczególnym uwzględnieniem zgięcia grzbietowego i podeszwowego oraz metod przywracania ruchomości i zdolności do przenoszenia obciążeń.</p>
+<p><strong>Zakres tematyczny:</strong></p>
+<ul className="training-outcomes">
+<li>anatomia funkcjonalna i biomechanika stawu skokowego,</li>
+<li>ocena zgięcia grzbietowego i podeszwowego oraz interpretacja ograniczeń ruchomości,</li>
+<li>wykorzystanie testów funkcjonalnych w ocenie zakresu ruchu, siły i kontroli posturalnej,</li>
+<li>metodyka pracy nad przywracaniem dostępnego zakresu ruchu,</li>
+<li><strong>trening izometryczny:</strong> zastosowanie, regulacja intensywności i modyfikacja wymagań,</li>
+<li><strong>trening ekscentryczny:</strong> strategie obciążania kompleksu mięśniowo-ścięgnistego i progresja zdolności siłowych,</li>
+<li><strong>propriocepcja:</strong> trening równowagi, kontroli nerwowo-mięśniowej i zwiększanie wymagań funkcjonalnych,</li>
+<li>continuum postępowania po urazach stawu skokowego, od ograniczonej tolerancji obciążenia do odbudowy sprawności.</li>
+</ul>
+<p className="training-workshop"><strong>Warsztat praktyczny:</strong> ocena funkcjonalna, wykorzystanie izometrii i ekscentryki, zadania proprioceptywne oraz planowanie progresji obciążenia.</p></div>
+</details>
+<details className="training-details">
+<summary><span className="training-block-label">02 / KOLANO</span><span className="training-block-subtitle"><strong>ACL, strategie rehabilitacyjne i progresja zdolności siłowych</strong></span><span className="training-disclosure-icon" aria-hidden="true"></span></summary>
+<div className="training-details-body"><p>Blok poświęcony jest metodyce pracy z kolanem w kontekście uszkodzenia i rekonstrukcji więzadła krzyżowego przedniego. Uczestnicy poznają zasady odbudowy funkcji, rozwijania siły oraz stopniowego zwiększania wymagań ruchowych i treningowych.</p>
+<p><strong>Zakres tematyczny:</strong></p>
+<ul className="training-outcomes">
+<li>anatomia funkcjonalna ACL i jego rola w stabilności stawu kolanowego,</li>
+<li>konsekwencje urazu i rekonstrukcji ACL dla funkcji kończyny dolnej,</li>
+<li>ocena ruchomości, zdolności generowania siły i kontroli nerwowo-mięśniowej,</li>
+<li>analiza deficytów siłowych, asymetrii i ograniczeń funkcjonalnych,</li>
+<li><strong>trening izometryczny:</strong> wykorzystanie w odbudowie zdolności siłowych mięśnia czworogłowego uda,</li>
+<li><strong>trening ekscentryczny:</strong> zwiększanie możliwości mechanicznych i tolerancji obciążenia,</li>
+<li><strong>propriocepcja i kontrola nerwowo-mięśniowa:</strong> strategie pracy w zadaniach statycznych i dynamicznych,</li>
+<li>continuum rehabilitacji po ACL, od przywracania podstawowej funkcji do coraz bardziej wymagających zadań treningowych,</li>
+<li>analiza przypadków osób po rekonstrukcji ACL.</li>
+</ul>
+<p className="training-workshop"><strong>Warsztat praktyczny:</strong> ocena wybranych parametrów funkcjonalnych, analiza deficytów siłowych oraz wykorzystanie różnych form pracy mięśniowej w progresji treningowej.</p></div>
+</details>
+<details className="training-details">
+<summary><span className="training-block-label">03 / BIODRO</span><span className="training-block-subtitle"><strong>Anatomia funkcjonalna, morfologia stawu i indywidualizacja przysiadu</strong></span><span className="training-disclosure-icon" aria-hidden="true"></span></summary>
+<div className="training-details-body"><p>Blok obejmuje analizę budowy i mechaniki stawu biodrowego oraz ich znaczenia dla możliwości ruchowych i doboru ćwiczeń siłowych.</p>
+<p>Szczególną uwagę poświęcamy <strong>różnicom anatomicznym pomiędzy osobami trenującymi</strong> oraz praktycznym konsekwencjom tych różnic podczas wykonywania przysiadu.</p>
+<p><strong>Zakres tematyczny:</strong></p>
+<ul className="training-outcomes">
+<li>anatomia funkcjonalna stawu biodrowego i budowa panewki,</li>
+<li>orientacja panewki, torsja kości udowej i indywidualne uwarunkowania anatomiczne,</li>
+<li>wpływ morfologii stawu na dostępne zakresy ruchu,</li>
+<li>ocena zgięcia, rotacji wewnętrznej i zewnętrznej biodra,</li>
+<li>możliwości i ograniczenia interpretacji testów klinicznych,</li>
+<li><strong>biomechanika przysiadu:</strong> wpływ szerokości ustawienia stóp, ich rotacji i głębokości ruchu,</li>
+<li>indywidualizacja ustawienia i wariantu przysiadu na podstawie możliwości ruchowych,</li>
+<li>analiza porównawcza różnych strategii wykonywania przysiadu.</li>
+</ul>
+<p className="training-workshop"><strong>Warsztat praktyczny:</strong> ocena zakresów ruchu biodra, porównanie konfiguracji przysiadu oraz dobór wariantu ćwiczenia do indywidualnych możliwości uczestnika.</p></div>
+</details>
+<details className="training-details">
+<summary><span className="training-block-label">04 / LBP</span><span className="training-block-subtitle"><strong>Odcinek lędźwiowy kręgosłupa, strategie ruchowe i progresywne obciążanie</strong></span><span className="training-disclosure-icon" aria-hidden="true"></span></summary>
+<div className="training-details-body"><p>Blok koncentruje się na metodyce pracy z osobami doświadczającymi niespecyficznego bólu dolnego odcinka pleców.</p>
+<p>Uczestnicy poznają strategie stopniowego wprowadzania ruchu, rozwijania tolerancji obciążenia oraz wykorzystania różnych form pracy mięśniowej w rehabilitacji i treningu.</p>
+<p><strong>Zakres tematyczny:</strong></p>
+<ul className="training-outcomes">
+<li>podstawowe mechanizmy niespecyficznego bólu odcinka lędźwiowego,</li>
+<li>zależność pomiędzy bólem, ruchem i tolerancją obciążenia,</li>
+<li>ocena ruchomości kręgosłupa i reakcji na wykonywane zadania,</li>
+<li>metodyka wprowadzania delikatnych ruchów i stopniowego zwiększania aktywności,</li>
+<li><strong>trening izometryczny:</strong> zastosowanie w budowaniu zdolności do generowania siły,</li>
+<li><strong>trening koncentryczny i ekscentryczny:</strong> wykorzystanie w rozwijaniu możliwości ruchowych i siłowych,</li>
+<li>strategie progresywnego zwiększania obciążenia, zakresu ruchu i wymagań funkcjonalnych,</li>
+<li>continuum postępowania od podstawowej tolerancji ruchu do bardziej wymagających zadań treningowych,</li>
+<li>analiza przypadków osób z nawracającym niespecyficznym LBP.</li>
+</ul>
+<p className="training-workshop"><strong>Warsztat praktyczny:</strong> ocena reakcji na ruch, wykorzystanie izometrii i pracy dynamicznej oraz planowanie stopniowej ekspozycji na obciążenie.</p></div>
+</details></div></section>
+      <section><h2>METODYKA SZKOLENIA</h2>
+<p>ATHLES Method opiera się na połączeniu wiedzy teoretycznej z jej bezpośrednim zastosowaniem w warunkach treningowych.</p>
+<p>Program obejmuje <strong>cztery 90-minutowe bloki tematyczne</strong>, podczas których uczestnicy pracują nad oceną funkcjonalną, doborem strategii ruchowych i wykorzystaniem metod treningowych w różnych sytuacjach klinicznych.</p>
+<p>Zajęcia realizowane są w formule warsztatowej:</p>
+<ul className="training-outcomes">
+<li>krótkie wprowadzenia teoretyczne oparte na aktualnej literaturze naukowej,</li>
+<li>demonstracje testów i metod treningowych,</li>
+<li>praktyczna praca w parach i małych grupach,</li>
+<li>porównywanie i modyfikowanie strategii obciążania,</li>
+<li>analiza przypadków klinicznych i treningowych,</li>
+<li>dyskusja nad zastosowaniem omawianych metod w codziennej praktyce zawodowej.</li>
+</ul>
+<p><strong>Celem szkolenia jest rozwinięcie umiejętności świadomego wykorzystania metod rehabilitacyjnych i treningowych</strong>, z uwzględnieniem biomechaniki, indywidualnych możliwości oraz procesu stopniowej adaptacji do obciążeń.</p></section>
+<section><h2>DLA KOGO?</h2>
+<p><strong>Fizjoterapeutki i Fizjoterapeuci</strong></p>
+<p>Zainteresowani rozwijaniem warsztatu pracy z pacjentami ortopedycznymi oraz wykorzystaniem metod treningu siłowego w procesie przywracania sprawności.</p>
+<p><strong>Trenerki i Trenerzy Personalni</strong></p>
+<p>Chcący poszerzyć kompetencje w zakresie anatomii funkcjonalnej, biomechaniki oraz pracy z osobami o zróżnicowanych możliwościach ruchowych.</p>
+<p><strong>Trenerki i Trenerzy Medyczni</strong></p>
+<p>Pracujący z osobami po urazach, z ograniczeniami funkcjonalnymi oraz w procesie stopniowego powrotu do aktywności fizycznej.</p>
+<p><strong>Trenerki i Trenerzy Przygotowania Motorycznego</strong></p>
+<p>Chcący rozwijać umiejętności programowania obciążeń i łączenia treningu siłowego z procesem odbudowy sprawności.</p>
+<p><strong>Studentki i Studenci Fizjoterapii oraz kierunków związanych ze sportem</strong></p>
+<p>Zainteresowani praktycznym zastosowaniem wiedzy z anatomii, biomechaniki i metodyki treningu.</p></section>
+<section><h2>INFORMACJE ORGANIZACYJNE</h2>
+<ul className="training-outcomes">
+<li><strong>Forma:</strong> jednodniowe szkolenie stacjonarne</li>
+<li><strong>Czas trwania:</strong> 6 godzin zajęć dydaktycznych</li>
+<li><strong>Program:</strong> 4 bloki tematyczne po 90 minut</li>
+<li><strong>Charakter szkolenia:</strong> teoretyczno-praktyczny, z około 78% udziałem zajęć praktycznych</li>
+<li><strong>Liczba miejsc:</strong> maksymalnie 10 uczestników</li>
+</ul></section>
       <section className="training-teacher"><img src="/Mateusz.jpeg" alt="Mateusz Nastula" loading="lazy"/><div><p className="eyebrow">PROWADZĄCY</p><h2>Mateusz Nastula</h2><p>Fizjoterapeuta i trener przygotowania motorycznego. Prowadzi ATHLES Studio w Toruniu.</p></div></section>
-      <section><p className="eyebrow">ZAPISY</p><h2>Przećwicz decyzje, które podejmujesz w swojej pracy.</h2><p>Dobierz zadanie, ustal jego dawkę i zdecyduj, co zrobić dalej. Dołącz do ATHLES Method i przećwicz ten proces na konkretnych przypadkach.</p><p>24 października 2026 · ATHLES Studio, Toruń · 1299 zł</p><TrainingBooking /></section>
+      <section className="training-registration"><h2>ZAPISY NA SZKOLENIE</h2><p>{TRAINING_NAME}</p><p>24 października 2026 · ATHLES Studio, Mazowiecka 70a, Toruń</p><p><strong>1299 zł</strong> · Maksymalnie 10 uczestników</p><TrainingBooking /></section>
     </div>
   </article>;
 }
