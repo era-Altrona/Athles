@@ -644,7 +644,7 @@ function Shop() {
     <p className="lead">Szkolenia stacjonarne i kursy online. Wybierz temat i sprawdź program.</p>
     <div className="shop-filters" aria-label="Kategorie produktów">{["Wszystkie", "Szkolenia w ATHLES", "Kursy online"].map(item => <button key={item} type="button" aria-pressed={category === item} onClick={() => setCategory(item)}>{item}</button>)}</div>
     {category !== "Kursy online" ? <div className="shop-grid"><article className="shop-card">
-      <Link to={TRAINING_PATH}><img src="/image_athles.jpeg" alt="Grafika ATHLES" loading="lazy" /></Link>
+      <Link to={TRAINING_PATH}><img src="/szkolenia/athles-konczyna-dolna.png" alt="Grafika szkolenia ATHLES" loading="lazy" /></Link>
       <div className="shop-card-copy"><p className="eyebrow">SZKOLENIE STACJONARNE</p><h2><Link to={TRAINING_PATH}>{TRAINING_NAME}</Link></h2><p>24.10.2026 · Toruń</p><p>Praktyczna metodyka pracy z kończyną dolną i kręgosłupem. Od rehabilitacji do progresywnego treningu siłowego.</p><div className="shop-card-bottom"><strong>1299 zł</strong><Link className="button primary" to={TRAINING_PATH}>Zobacz szkolenie ↗</Link></div></div>
     </article></div> : <div className="shop-empty"><h2>Kursy online</h2><p>Produkty pojawią się tutaj po uruchomieniu sprzedaży.</p></div>}
   </section>;
@@ -671,7 +671,7 @@ function Training() {
   }, []);
   return <article className="shop-page container">
     <Link className="shop-back" to="/sklep">← Wróć do sklepu</Link>
-    <div className="training-grid"><img className="training-poster" src="/image_athles.jpeg" alt="Grafika ATHLES" />
+    <div className="training-grid"><img className="training-poster" src="/szkolenia/athles-konczyna-dolna.png" alt="Grafika szkolenia ATHLES" />
       <div><p className="eyebrow">SZKOLENIE STACJONARNE · TORUŃ</p><h1>{TRAINING_NAME}</h1><p className="lead"><strong>Praktyczna metodyka pracy z kończyną dolną i kręgosłupem. Od rehabilitacji do progresywnego treningu siłowego.</strong></p>
         <dl className="training-facts"><div><dt>Termin</dt><dd>24 października 2026</dd></div><div><dt>Miejsce</dt><dd>ATHLES Studio · Mazowiecka 70a, Toruń</dd></div><div><dt>Forma</dt><dd>1 dzień · 6 godzin zajęć · 4 bloki po 90 minut</dd></div><div><dt>Praktyka</dt><dd>Około 78% zajęć</dd></div><div><dt>Grupa</dt><dd>Maksymalnie 10 uczestników</dd></div><div><dt>Prowadzący</dt><dd>Mateusz Nastula</dd></div></dl>
         <div className="training-price">1299 zł</div><TrainingBooking /><p>Masz pytania? <a href="mailto:kontakt@athles.pl">Napisz do nas</a>.</p>
