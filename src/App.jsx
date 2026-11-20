@@ -9,6 +9,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import "./App.css";
+import PersonalTrainerCourse, { PersonalTrainerCourseCard, PERSONAL_TRAINER_COURSE } from "./PersonalTrainerCourse";
 const Router =
   window.location.protocol === "file:" ? HashRouter : BrowserRouter;
 const BOOKSY = "https://athlesstudio.booksy.com/a";
@@ -646,7 +647,7 @@ function Shop() {
     {category !== "Kursy online" ? <div className="shop-grid"><article className="shop-card">
       <Link to={TRAINING_PATH}><img src="/szkolenia/athles-konczyna-dolna.png" alt="Grafika szkolenia ATHLES" loading="lazy" /></Link>
       <div className="shop-card-copy"><p className="eyebrow">SZKOLENIE STACJONARNE</p><h2><Link to={TRAINING_PATH}>{TRAINING_NAME}</Link></h2><p>24.10.2026 · Toruń</p><p>Praktyczna metodyka pracy z kończyną dolną i kręgosłupem. Od rehabilitacji do progresywnego treningu siłowego.</p><div className="shop-card-bottom"><strong>1299 zł</strong><Link className="button primary" to={TRAINING_PATH}>Zobacz szkolenie ↗</Link></div></div>
-    </article></div> : <div className="shop-empty"><h2>Kursy online</h2><p>Produkty pojawią się tutaj po uruchomieniu sprzedaży.</p></div>}
+    </article><PersonalTrainerCourseCard /></div> : <div className="shop-empty"><h2>Kursy online</h2><p>Produkty pojawią się tutaj po uruchomieniu sprzedaży.</p></div>}
   </section>;
 }
 function Training() {
@@ -801,6 +802,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/sklep" element={<Shop />} />
+          <Route path={PERSONAL_TRAINER_COURSE.path} element={<PersonalTrainerCourse />} />
           <Route path={TRAINING_PATH} element={<Training />} />
           <Route path="/sklep/diagnostyka-konczyny-dolnej" element={<Navigate to={TRAINING_PATH} replace />} />
           <Route path="/privacy-policy" element={<Privacy />} />
