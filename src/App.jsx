@@ -9,66 +9,41 @@ import {
   useLocation,
 } from "react-router-dom";
 import "./App.css";
+import { TeamSection, PricingSection } from "./TeamPricing";
 import PersonalTrainerCourse, { PersonalTrainerCourseCard, PERSONAL_TRAINER_COURSE } from "./PersonalTrainerCourse";
 const Router =
   window.location.protocol === "file:" ? HashRouter : BrowserRouter;
 const BOOKSY = "https://athlesstudio.booksy.com/a";
-const team = [
-  {
-    name: "Mateusz Nastula",
-    role: "Fizjoterapeuta · trener przygotowania motorycznego",
-    photo: "/Mateusz.jpeg",
-    text: "Pracuje z osobami z bólem i po urazach. Łączy rehabilitację z treningiem medycznym oraz przygotowaniem do powrotu do sportu.",
-  },
-  {
-    name: "Karol Usarek",
-    role: "Trener medyczny",
-    photo: "/Karol.jpeg",
-    text: "Pomaga wrócić do aktywności i rozwijać sprawność. Prowadzi trening dostosowany do aktualnych możliwości i celu.",
-  },
-  {
-    name: "Iwo Kropkowski",
-    role: "Trener personalny",
-    photo: "/Iwo.jpeg",
-    text: "Prowadzi trening siłowy i funkcjonalny. Pracuje nad techniką, siłą i kondycją, także z osobami zaczynającymi po przerwie.",
-  },
-  {
-    name: "Wiktoria Nastula",
-    role: "Dietetyk kliniczny · psychodietetyk",
-    photo: "/Wiktoria.jpeg",
-    text: "Pomaga uporządkować sposób odżywiania. Dopasowuje zalecenia i jadłospis do celu, codziennych obowiązków oraz aktywności.",
-  },
-];
 const services = [
   [
     "Fizjoterapia i rehabilitacja",
     "Powrót do sprawności",
     "Fizjoterapia w ATHLES obejmuje badanie i pracę z dolegliwościami układu ruchu, m.in. bólem pleców, szyi, kolana czy barku. Mateusz prowadzi rehabilitację ortopedyczną i sportową, również po kontuzji i operacji. Plan zależy od wyników badania i tego, do jakiej aktywności chcesz wrócić.",
-    "200 zł / 60 min",
+    "210 zł z Mateuszem / 60 min",
   ],
   [
     "Trening medyczny",
     "Od rehabilitacji do aktywności",
     "Trening medyczny łączy pracę nad siłą i sprawnością z uwzględnieniem bólu, ograniczeń ruchu lub przebytego urazu. Ćwiczenia i obciążenie dobieramy po ocenie Twoich możliwości. To forma współpracy dla osób wracających do aktywności i treningu po rehabilitacji.",
-    "200 zł / 60 min",
+    "210 zł z Mateuszem / 60 min",
   ],
   [
     "Trening personalny",
     "Siła · kondycja · sylwetka",
     "Trening personalny w Toruniu dla osób początkujących i tych, które już ćwiczą. Podczas spotkań 1 na 1 uczysz się techniki ćwiczeń siłowych i pracujesz nad siłą, kondycją lub sylwetką. Trener dobiera plan do Twojego poziomu i zmienia go wraz z postępami.",
-    "180 zł z trenerem · 200 zł z Mateuszem / 60 min",
+    "200 zł z trenerem · 210 zł z Mateuszem / 60 min",
   ],
   [
     "Przygotowanie motoryczne",
     "Przygotowanie do sportu",
     "Przygotowanie motoryczne sportowców obejmuje trening siły, szybkości, mocy, skoczności i wydolności. Program dobieramy do dyscypliny, poziomu oraz etapu sezonu. Pracujemy nad przygotowaniem do zawodów i powrotem do sportu po przerwie.",
-    "180 zł z trenerem · 200 zł z Mateuszem / 60 min",
+    "200 zł z trenerem · 210 zł z Mateuszem / 60 min",
   ],
   [
     "Terapia manualna",
     "Ruchomość i dolegliwości",
     "Terapia manualna to praca z mięśniami i stawami, którą fizjoterapeuta dobiera po badaniu. Może być częścią rehabilitacji przy bólu i ograniczeniu ruchomości. W zależności od sytuacji uzupełniamy ją ćwiczeniami i zaleceniami dotyczącymi aktywności.",
-    "200 zł / 60 min",
+    "210 zł z Mateuszem / 60 min",
   ],
   [
     "Dietetyka",
@@ -138,6 +113,7 @@ function Header() {
             ["O nas", "o-nas"],
             ["Zespół", "zespol"],
             ["Oferta", "oferta"],
+            ["Cennik", "cennik"],
             ["Sklep", "sklep"],
             ["Kontakt", "kontakt"],
           ].map(([label, id]) => (
@@ -267,36 +243,7 @@ function Home() {
           <span className="inline-note">55 minut · 0 zł</span>
         </div>
       </section>
-      <section id="zespol" className="section team-section">
-        <div className="container">
-          <div className="section-heading">
-            <div>
-              <p className="eyebrow">ZESPÓŁ ATHLES</p>
-              <h2>Poznaj nasz zespół.</h2>
-            </div>
-            <p>
-              Różne specjalizacje.
-              <br />
-              Wspólna praca nad Twoim celem.
-            </p>
-          </div>
-          <div className="team-grid">
-            {team.map((person) => (
-              <article className="person" key={person.name}>
-                <img src={person.photo} alt={person.name} loading="lazy" />
-                <div className="person-copy">
-                  <h3>{person.name}</h3>
-                  <p className="role">{person.role}</p>
-                  <p>{person.text}</p>
-                  <Booking className="text-link">
-                    Sprawdź terminy w Booksy
-                  </Booking>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TeamSection />
       <section id="oferta" className="section offer-section">
         <div className="container">
           <div className="section-heading">
@@ -324,28 +271,10 @@ function Home() {
               </article>
             ))}
           </div>
-          <details className="packages">
-            <summary>
-              Pakiety spotkań i treningów <span aria-hidden="true">+</span>
-            </summary>
-            <div className="package-grid">
-              <div>
-                <h3>Z Mateuszem</h3>
-                <p>3 spotkania: 585 zł</p>
-                <p>7 spotkań: 1 295 zł</p>
-                <p>12 spotkań: 2 160 zł</p>
-              </div>
-              <div>
-                <h3>Z trenerami</h3>
-                <p>3 treningi: 510 zł</p>
-                <p>7 treningów: 1 155 zł</p>
-                <p>12 treningów: 1 920 zł</p>
-              </div>
-            </div>
-            <Booking className="text-link">Sprawdź pakiety w Booksy</Booking>
-          </details>
+
         </div>
       </section>
+      <PricingSection />
       <section id="dietetyka" className="section nutrition-section">
         <div className="container">
           <div className="nutrition-grid">
