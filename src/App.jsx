@@ -19,31 +19,31 @@ const services = [
     "Fizjoterapia i rehabilitacja",
     "Powrót do sprawności",
     "Fizjoterapia w ATHLES obejmuje badanie i pracę z dolegliwościami układu ruchu, m.in. bólem pleców, szyi, kolana czy barku. Mateusz prowadzi rehabilitację ortopedyczną i sportową, również po kontuzji i operacji. Plan zależy od wyników badania i tego, do jakiej aktywności chcesz wrócić.",
-    "210 zł z Mateuszem / 60 min",
+    "210 zł z fizjoterapeutą / 60 min",
   ],
   [
     "Trening medyczny",
     "Od rehabilitacji do aktywności",
     "Trening medyczny łączy pracę nad siłą i sprawnością z uwzględnieniem bólu, ograniczeń ruchu lub przebytego urazu. Ćwiczenia i obciążenie dobieramy po ocenie Twoich możliwości. To forma współpracy dla osób wracających do aktywności i treningu po rehabilitacji.",
-    "210 zł z Mateuszem / 60 min",
+    "210 zł z fizjoterapeutą / 60 min",
   ],
   [
     "Trening personalny",
     "Siła · kondycja · sylwetka",
     "Trening personalny w Toruniu dla osób początkujących i tych, które już ćwiczą. Podczas spotkań 1 na 1 uczysz się techniki ćwiczeń siłowych i pracujesz nad siłą, kondycją lub sylwetką. Trener dobiera plan do Twojego poziomu i zmienia go wraz z postępami.",
-    "200 zł z trenerem · 210 zł z Mateuszem / 60 min",
+    "200 zł z trenerem · 210 zł z fizjoterapeutą / 60 min",
   ],
   [
     "Przygotowanie motoryczne",
     "Przygotowanie do sportu",
     "Przygotowanie motoryczne sportowców obejmuje trening siły, szybkości, mocy, skoczności i wydolności. Program dobieramy do dyscypliny, poziomu oraz etapu sezonu. Pracujemy nad przygotowaniem do zawodów i powrotem do sportu po przerwie.",
-    "200 zł z trenerem · 210 zł z Mateuszem / 60 min",
+    "200 zł z trenerem · 210 zł z fizjoterapeutą / 60 min",
   ],
   [
     "Terapia manualna",
     "Ruchomość i dolegliwości",
     "Terapia manualna to praca z mięśniami i stawami, którą fizjoterapeuta dobiera po badaniu. Może być częścią rehabilitacji przy bólu i ograniczeniu ruchomości. W zależności od sytuacji uzupełniamy ją ćwiczeniami i zaleceniami dotyczącymi aktywności.",
-    "210 zł z Mateuszem / 60 min",
+    "210 zł z fizjoterapeutą / 60 min",
   ],
   [
     "Dietetyka",
@@ -252,23 +252,17 @@ function Home() {
               <h2>Usługi ATHLES w Toruniu</h2>
             </div>
             <p>
-              Ceny i usługi według Booksy.
+              Wybierz usługę i sprawdź szczegóły.
               <br />
               Aktualne terminy znajdziesz przy rezerwacji.
             </p>
           </div>
-          <div className="services-grid">
-            {services.map(([name, tag, text, price], index) => (
-              <article className="service" key={name}>
-                <div className="service-top">
-                  <span className="service-number">0{index + 1}</span>
-                  <span>{tag}</span>
-                </div>
-                <h3>{name}</h3>
-                <p>{text}</p>
-                <p className="price">{price}</p>
-                <Booking className="text-link">Zarezerwuj w Booksy</Booking>
-              </article>
+          <div className="athles-services-list">
+            {services.map(([name, , text, price]) => (
+              <details className="athles-service-short" key={name}>
+                <summary><h3>{name}</h3><span>{price}</span></summary>
+                <div><p>{text}</p><Booking className="text-link">Zarezerwuj w Booksy</Booking></div>
+              </details>
             ))}
           </div>
 
